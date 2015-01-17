@@ -1,8 +1,7 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:context=".MainActivity"
     android:background="@drawable/background"
     android:weightSum="1"
     android:baselineAligned="false"
@@ -33,7 +32,6 @@
         android:layout_gravity="center_horizontal" />
 
     <ImageView
-        android:layout_marginTop="50dip"
         android:layout_width="159dp"
         android:layout_height="158dp"
         android:id="@+id/imageView2"
@@ -41,18 +39,18 @@
         android:layout_gravity="center_horizontal" />
 
     <Button
-        android:layout_marginTop="100dip"
         android:id="@+id/create"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/button_create"
         android:onClick="btnCreate"
-        android:layout_centerHorizontal="true"
         android:textSize="48sp"
         android:layout_gravity="center_horizontal"
         android:background="#3F51B5"
         android:textColor="#ffffff"
-        android:alpha=".75" />
+        android:alpha=".75"
+        android:layout_above="@+id/join"
+        android:layout_toEndOf="@+id/imageView" />
     style="?android:attr/borderlessButtonStyle"/>
 
     <Button
@@ -60,16 +58,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/button_join"
-        android:layout_centerHorizontal="true"
         android:textSize="48sp"
         style="?android:attr/borderlessButtonStyle"
-        android:layout_gravity="center_horizontal"
         android:textColor="#ffffff"
         android:background="#3F51B5"
-        android:alpha=".85" />
+        android:alpha=".85"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
 
     />
 
 
-</LinearLayout>
+</RelativeLayout>
 
