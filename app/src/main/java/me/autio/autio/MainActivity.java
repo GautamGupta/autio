@@ -70,4 +70,12 @@ public class MainActivity extends ActionBarActivity {
             }
         }
     }
+
+    /**
+     * Called when the user clicks the Create button
+     */
+    public void btnJoin(View view) {
+        Intent intent = new Intent(this, LoginSpotify.class);
+        startActivity(intent);
+    }
 }

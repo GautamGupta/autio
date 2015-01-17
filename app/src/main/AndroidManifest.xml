@@ -2,11 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="me.autio.autio" >
 
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -16,8 +19,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
+        <activity
+            android:name=".LoginSpotify"
+            android:launchMode="singleTask" >
 
-    <uses-feature android:name="android.hardware.camera" />
+            <!-- An intent filter that will receive the response from the authentication service -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data
+                    android:host="callback"
+                    android:scheme="46710"/>
+            </intent-filter>
+        </activity>
+    </application>
 
 </manifest>

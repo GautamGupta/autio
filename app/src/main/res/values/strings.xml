@@ -7,5 +7,7 @@
     <string name="button_create">Create</string>
     <string name="scan_qr">Scan the Code shown on the Screen</string>
     <string name="button_join">Join</string>
+    <string name="title_activity_login_spotify">Login via Spotify</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>
