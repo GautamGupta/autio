@@ -1,15 +1,47 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="me.autio.autio.LoginSpotify">
+    android:layout_height="match_parent"
+    tools:context="me.autio.autio.LoginSpotify"
+    android:background="@drawable/background3"
+    >
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/title_activity_login_spotify"
-        android:onClick="btnLogin" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:weightSum="1">
 
-</LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="It&apos;s simple, just sign-in to Spotify!"
+            android:padding="40dp"
+            android:id="@+id/instruction"
+            android:textSize="60sp"
+            android:textColor="#ffffff"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:id="@+id/spotifylogin"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="150dp"
+            android:layout_centerHorizontal="true"
+            android:textSize="35sp"
+            android:alpha="0.8"
+            android:layout_height="match_parent"
+            android:text="Sign In"
+            android:onClick="gautam's magic goes here"/>
+    </LinearLayout>
+
+</RelativeLayout>

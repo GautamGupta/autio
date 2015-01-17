@@ -26,6 +26,11 @@
         </activity>
 
         <activity
+            android:name="SearchActivity"
+            android:label="Autio">
+        </activity>
+
+        <activity
             android:name=".LoginSpotify"
             android:launchMode="singleInstance" >
 

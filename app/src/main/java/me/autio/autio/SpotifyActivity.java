@@ -15,6 +15,7 @@ import android.app.Activity;
 
 import com.larvalabs.svgandroid.SVG;
 import com.larvalabs.svgandroid.SVGParser;
+import com.spotify.sdk.android.authentication.SpotifyAuthentication;
 
 /**
  * Created by Ivan on 2015-01-17.
@@ -25,9 +26,6 @@ public class SpotifyActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_spotify);
-        SVG s = SVGParser.getSVGFromResource(getResources(), R.drawable.log_in_mobile);
-        Picture picture = s.getPicture();
-        Drawable drawable = s.createPictureDrawable();
     }
 
     public void btnLogin(View view){
