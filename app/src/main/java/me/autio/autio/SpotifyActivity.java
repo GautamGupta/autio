@@ -16,7 +16,6 @@ public class SpotifyActivity extends ActionBarActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        TextView title = (TextView)findViewById(R.id.audio_title);
         setContentView(R.layout.activity_spotify);
 
     }

@@ -5,24 +5,13 @@
     android:weightSum="1"
     android:baselineAligned="false"
     android:orientation="vertical"
-    android:id="@+id/bg">
+    android:id="@+id/bg"><![CDATA[
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="AUTIO"
-        android:id="@+id/audio_title"
-        android:textSize="50sp"
-        android:gravity="center"
-        android:focusableInTouchMode="false"
-        android:layout_centerHorizontal="true"
-        android:background="#5C6BC0"
-        android:textColor="#ffffff"
-        android:alpha=".85" />
     />
 
+
+    ]]>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -82,6 +71,15 @@
             android:layout_toRightOf="@+id/imageView2"
             android:layout_weight="1" />
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:id="@+id/imageView3"
+        android:src="@drawable/autiotext"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp" />
 
     />
 
