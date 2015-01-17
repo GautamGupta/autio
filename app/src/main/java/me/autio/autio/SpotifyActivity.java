@@ -1,10 +1,11 @@
 package me.autio.autio;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.widget.TextView;
-import com.larvalabs.svgandroid.SVG;
-import com.larvalabs.svgandroid.SVGParser;
+import android.graphics.Picture;
+import svg-android.*
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.app.Activity;
@@ -16,6 +17,10 @@ public class SpotifyActivity extends ActionBarActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TextView title = (TextView)findViewById(R.id.audio_title);
+        SVG s = SVGParser.getSVGRomResource(getResources(), R.raw.filename);
+        Picture picture = s.getPicture();
+        Drawable drawable = s.createPictureDrawable();
         setContentView(R.layout.activity_spotify);
 
     }
