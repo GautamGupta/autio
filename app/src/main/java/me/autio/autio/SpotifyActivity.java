@@ -25,10 +25,9 @@ public class SpotifyActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_spotify);
-        //TextView title = (TextView)findViewById(R.id.audio_title);
-        //SVG s = SVGParser.getSVGFromResource(getResources(), R.drawable.);
-        //Picture picture = s.getPicture();
-        //Drawable drawable = s.createPictureDrawable();
+        SVG s = SVGParser.getSVGFromResource(getResources(), R.drawable.log_in_mobile);
+        Picture picture = s.getPicture();
+        Drawable drawable = s.createPictureDrawable();
     }
 
     public void btnLogin(View view){
