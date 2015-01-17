@@ -1,9 +1,15 @@
 package me.autio.autio;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -35,5 +41,33 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Called when the user clicks the Join button
+     */
+    public void btnCreate(View view) {
+        IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
+        integrator.addExtra("SCAN_WIDTH", 640);
+        integrator.addExtra("SCAN_HEIGHT", 640);
+        integrator.addExtra("SCAN_MODE", "QR_CODE_MODE,PRODUCT_MODE");
+
+        integrator.addExtra("PROMPT_MESSAGE", "@string/scan_qr");
+        integrator.initiateScan(IntentIntegrator.PRODUCT_CODE_TYPES);
+    }
+
+    /**
+     * Receive the QR Code Data
+     */
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+        if (result != null) {
+            String contents = result.getContents();
+            if (contents != null) {
+                Log.i("Barcode Result", result.toString());
+            } else {
+                Log.i("Barcode Result", "Failed");
+            }
+        }
     }
 }
