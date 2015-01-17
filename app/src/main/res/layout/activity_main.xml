@@ -25,7 +25,7 @@
         android:id="@+id/imageView2"
         android:background="@drawable/autio"
         android:layout_gravity="center_horizontal"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/imageView3"
         android:layout_centerHorizontal="true" /><![CDATA[
 
     style="?android:attr/borderlessButtonStyle"/>
