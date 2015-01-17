@@ -1,6 +1,8 @@
 package me.autio.autio;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -52,7 +54,7 @@ public class MainActivity extends ActionBarActivity {
         integrator.addExtra("SCAN_HEIGHT", 500);
         integrator.addExtra("SCAN_MODE", "SCAN_MODE");
         integrator.addExtra("PROMPT_MESSAGE", R.string.scan_qr);
-        integrator.initiateScan(IntentIntegrator.PRODUCT_CODE_TYPES);
+        integrator.initiateScan(IntentIntegrator.QR_CODE_TYPES);
     }
 
     /**
@@ -63,7 +65,15 @@ public class MainActivity extends ActionBarActivity {
         if (result != null) {
             String contents = result.getContents();
             if (contents != null) {
-                Log.i("Barcode Result", result.toString());
+                String session_id = result.getContents();
+                Log.i("Barcode Result", session_id);
+
+                //Update local shared preferences of session
+                SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString(getString(R.string.session_id), session_id);
+                editor.commit();
+
             } else {
                 Log.i("Barcode Result", "Failed");
             }
