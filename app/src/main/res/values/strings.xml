@@ -11,6 +11,7 @@
     <string name="hello_world">Hello world!</string>
 
     <!-- Shared Preferences -->
-    <string name="session_id">Hello world!</string>
+    <string name="session_id">null</string>
+    <string name="access_token">null</string>
 
 </resources>

@@ -68,6 +68,7 @@ public class MainActivity extends ActionBarActivity {
                 String session_id = result.getContents();
                 Log.i("Barcode Result", session_id);
 
+
                 //Update local shared preferences of session
                 SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
@@ -84,7 +85,7 @@ public class MainActivity extends ActionBarActivity {
      * Called when the user clicks the Create button
      */
     public void btnCreate(View view) {
-        Intent intent = new Intent(this, SpotifyActivity.class);
+        Intent intent = new Intent(this, LoginSpotify.class);
         startActivity(intent);
     }
 }

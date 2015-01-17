@@ -1,6 +1,8 @@
 package me.autio.autio;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -40,6 +42,12 @@ public class LoginSpotify extends ActionBarActivity implements
         Uri uri = intent.getData();
         if (uri != null) {
             AuthenticationResponse response = SpotifyAuthentication.parseOauthResponse(uri);
+
+            SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString(getString(R.string.access_token), response.getAccessToken());
+            editor.commit();
+
             Config playerConfig = new Config(this, response.getAccessToken(), CLIENT_ID);
             Spotify spotify = new Spotify();
             mPlayer = spotify.getPlayer(playerConfig, this, new Player.InitializationObserver() {
