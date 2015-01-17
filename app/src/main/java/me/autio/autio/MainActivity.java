@@ -84,7 +84,7 @@ public class MainActivity extends ActionBarActivity {
      * Called when the user clicks the Create button
      */
     public void btnCreate(View view) {
-        Intent intent = new Intent(this, LoginSpotify.class);
+        Intent intent = new Intent(this, SpotifyActivity.class);
         startActivity(intent);
     }
 }

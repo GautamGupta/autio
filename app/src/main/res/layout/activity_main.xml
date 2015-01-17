@@ -5,13 +5,7 @@
     android:weightSum="1"
     android:baselineAligned="false"
     android:orientation="vertical"
-    android:id="@+id/bg"><![CDATA[
-
-
-    />
-
-
-    ]]>
+    android:id="@+id/bg">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -26,13 +20,7 @@
         android:background="@drawable/autio"
         android:layout_gravity="center_horizontal"
         android:layout_below="@+id/imageView3"
-        android:layout_centerHorizontal="true" /><![CDATA[
-
-    style="?android:attr/borderlessButtonStyle"/>
-
-
-
-    ]]>
+        android:layout_centerHorizontal="true" />
 
     <LinearLayout
         android:layout_width="fill_parent"

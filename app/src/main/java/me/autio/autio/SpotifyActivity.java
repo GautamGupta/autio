@@ -1,8 +1,10 @@
 package me.autio.autio;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.View;
 import android.widget.TextView;
 import android.graphics.Picture;
 import android.os.Bundle;
@@ -19,17 +21,18 @@ import com.larvalabs.svgandroid.SVGParser;
  */
 public class SpotifyActivity extends ActionBarActivity {
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login_spotify);
         //TextView title = (TextView)findViewById(R.id.audio_title);
         //SVG s = SVGParser.getSVGFromResource(getResources(), R.drawable.);
         //Picture picture = s.getPicture();
         //Drawable drawable = s.createPictureDrawable();
-        setContentView(R.layout.activity_main);
-
     }
 
-    protected void logInSpotify(){
-        //Gautam magic goes here
+    public void btnLogin(View view){
+        Intent intent = new Intent(this, LoginSpotify.class);
+        startActivity(intent);
     }
 }
