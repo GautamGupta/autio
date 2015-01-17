@@ -14,7 +14,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="AUTIO"
         android:id="@+id/audio_title"
-        android:textSize="100sp"
+        android:textSize="50sp"
         android:gravity="center"
         android:focusableInTouchMode="false"
         android:layout_centerHorizontal="true"
