@@ -11,8 +11,7 @@ import android.widget.ImageView;
 
 import android.app.Activity;
 
-import com.larvalabs.svgandroid.SVG;
-import com.larvalabs.svgandroid.SVGParser;
+import com.larvalabs.svgandroid.*;
 
 /**
  * Created by Ivan on 2015-01-17.
@@ -22,9 +21,9 @@ public class SpotifyActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //TextView title = (TextView)findViewById(R.id.audio_title);
-        SVG s = SVGParser.getSVGFromResource(getResources(), R.drawable.);
-        Picture picture = s.getPicture();
-        Drawable drawable = s.createPictureDrawable();
+        //SVG s = SVGParser.getSVGFromResource(getResources(), R.drawable.loginmobile);
+       // Picture picture = s.getPicture();
+       // Drawable drawable = s.createPictureDrawable();
         setContentView(R.layout.activity_spotify);
 
     }
