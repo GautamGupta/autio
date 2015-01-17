@@ -10,4 +10,7 @@
     <string name="title_activity_login_spotify">Login via Spotify</string>
     <string name="hello_world">Hello world!</string>
 
+    <!-- Shared Preferences -->
+    <string name="session_id">Hello world!</string>
+
 </resources>

@@ -29,7 +29,7 @@ public class LoginSpotify extends ActionBarActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_spotify);
         SpotifyAuthentication.openAuthWindow(CLIENT_ID, "token", REDIRECT_URI,
                 new String[]{"user-read-private", "streaming"}, null, this);
     }
