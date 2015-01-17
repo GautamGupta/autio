@@ -21,7 +21,7 @@
         </activity>
         <activity
             android:name=".LoginSpotify"
-            android:launchMode="singleTask" >
+            android:launchMode="singleInstance" >
 
             <!-- An intent filter that will receive the response from the authentication service -->
             <intent-filter>
@@ -32,7 +32,7 @@
 
                 <data
                     android:host="callback"
-                    android:scheme="46710"/>
+                    android:scheme="autio"/>
             </intent-filter>
         </activity>
     </application>

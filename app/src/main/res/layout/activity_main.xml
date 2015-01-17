@@ -38,7 +38,6 @@
         android:layout_height="158dp"
         android:id="@+id/imageView2"
         android:background="@drawable/autio"
-        android:backgroundTint="#"
         android:layout_gravity="center_horizontal" />
 
     <Button

@@ -22,7 +22,7 @@ public class LoginSpotify extends ActionBarActivity implements
         PlayerNotificationCallback, ConnectionStateCallback {
 
     private static final String CLIENT_ID = "7793202b53f64455ad566ade6425711d";
-    private static final String REDIRECT_URI = "46710://callback";
+    private static final String REDIRECT_URI = "autio://callback";
 
     private Player mPlayer;
 
