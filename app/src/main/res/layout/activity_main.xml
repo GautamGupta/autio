@@ -31,39 +31,57 @@
         android:layout_gravity="center_horizontal" />
 
     <ImageView
-        android:layout_width="159dp"
+        android:layout_width="158dp"
         android:layout_height="158dp"
         android:id="@+id/imageView2"
         android:background="@drawable/autio"
-        android:layout_gravity="center_horizontal" />
-
-    <Button
-        android:id="@+id/create"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/button_create"
-        android:onClick="btnCreate"
-        android:textSize="48sp"
         android:layout_gravity="center_horizontal"
-        android:background="#3F51B5"
-        android:textColor="#ffffff"
-        android:alpha=".75"
-        android:layout_above="@+id/join"
-        android:layout_toEndOf="@+id/imageView" />
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" /><![CDATA[
+
     style="?android:attr/borderlessButtonStyle"/>
 
-    <Button
-        android:id="@+id/join"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/button_join"
-        android:textSize="48sp"
-        style="?android:attr/borderlessButtonStyle"
-        android:textColor="#ffffff"
-        android:background="#3F51B5"
-        android:alpha=".85"
+
+
+    ]]>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="64dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true">
+
+        <Button
+            android:id="@+id/create"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="@string/button_create"
+            android:onClick="btnCreate"
+            android:textSize="18sp"
+            android:background="#3F51B5"
+            android:textColor="#ffffff"
+            android:alpha=".75"
+            android:padding="18dp"
+            android:layout_below="@+id/imageView2"
+            android:layout_toEndOf="@+id/imageView2"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/join"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="@string/button_join"
+            android:textSize="18sp"
+            style="?android:attr/borderlessButtonStyle"
+            android:textColor="#ffffff"
+            android:background="#3F51B5"
+            android:alpha=".85"
+            android:padding="18dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/create"
+            android:layout_toRightOf="@+id/imageView2"
+            android:layout_weight="1" />
+    </LinearLayout>
 
     />
 
