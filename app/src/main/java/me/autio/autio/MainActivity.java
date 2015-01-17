@@ -46,13 +46,12 @@ public class MainActivity extends ActionBarActivity {
     /**
      * Called when the user clicks the Join button
      */
-    public void btnCreate(View view) {
+    public void btnJoin(View view) {
         IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
-        integrator.addExtra("SCAN_WIDTH", 640);
-        integrator.addExtra("SCAN_HEIGHT", 640);
-        integrator.addExtra("SCAN_MODE", "QR_CODE_MODE,PRODUCT_MODE");
-
-        integrator.addExtra("PROMPT_MESSAGE", "@string/scan_qr");
+        integrator.addExtra("SCAN_WIDTH", 500);
+        integrator.addExtra("SCAN_HEIGHT", 500);
+        integrator.addExtra("SCAN_MODE", "SCAN_MODE");
+        integrator.addExtra("PROMPT_MESSAGE", R.string.scan_qr);
         integrator.initiateScan(IntentIntegrator.PRODUCT_CODE_TYPES);
     }
 
@@ -74,7 +73,7 @@ public class MainActivity extends ActionBarActivity {
     /**
      * Called when the user clicks the Create button
      */
-    public void btnJoin(View view) {
+    public void btnCreate(View view) {
         Intent intent = new Intent(this, LoginSpotify.class);
         startActivity(intent);
     }
