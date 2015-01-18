@@ -42,10 +42,14 @@ public class LoginSpotify extends ActionBarActivity implements
     private Player mPlayer;
     private SharedPreferences sharedPref;
 
+    public Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_spotify);
+
+        mContext = this.getApplicationContext();
 
         sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         String access_token = sharedPref.getString(getString(R.string.access_token), "");
@@ -120,6 +124,8 @@ public class LoginSpotify extends ActionBarActivity implements
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 // called when response HTTP status is "200 OK"
                 Log.i("LoginSpotify", response.toString());
+                Intent intent = new Intent(mContext, SearchActivity.class);
+                startActivity(intent);
             }
         });
 
