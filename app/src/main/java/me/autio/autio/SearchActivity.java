@@ -6,7 +6,20 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+<<<<<<< HEAD
 import android.widget.EditText;
+=======
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+>>>>>>> origin/master
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -50,11 +63,36 @@ public class SearchActivity extends ActionBarActivity{
                         JSONArray results = null;
                         try {
                             results = response.getJSONArray("results");
+
                             Log.i("SearchSpotify", "yes");
+
+                            String[] titles = new String[results.length()];
+                            String[] artists = new String[results.length()];
+                            String[] artworks = new String[results.length()];
+
+                            for(int i = 0; i < results.length(); i++) {
+                                titles[i] = results.getJSONObject(i).getString("name");
+                                artists[i] = results.getJSONObject(i).getString("artist");
+                                artworks[i] = results.getJSONObject(i).getJSONObject("artwork").getString("url");
+                            }
+
+                            SearchList adapter = new
+                                    SearchList(SearchActivity.this, titles, artists, artworks);
+                            ListView list = (ListView)findViewById(R.id.list);
+                            list.setAdapter(adapter);
+                            list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view,
+                                                        int position, long id) {
+                                    //Toast.makeText(SearchActivity.this, "You Clicked at " + web[+position], Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
                         } catch (JSONException e) {
                             Log.e("SearchSpotify", "nope");
                         }
 
+                        
                         String[] titles = new String[results.length()];
                         String[] artists = new String[results.length()];
                         String[] artworks = new String[results.length()];
@@ -62,6 +100,7 @@ public class SearchActivity extends ActionBarActivity{
                         /*for(int i = 0; i < results.length(); i++) {
                             titles[i] =
                         }*/
+
 
                     }
                 });
