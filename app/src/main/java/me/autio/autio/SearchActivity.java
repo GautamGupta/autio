@@ -6,9 +6,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-<<<<<<< HEAD
+import android.view.WindowManager;
 import android.widget.EditText;
-=======
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,10 +18,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> origin/master
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -32,10 +27,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
-/**
- * Created by Ivan on 2015-01-17.
- */
 public class SearchActivity extends ActionBarActivity{
 
     private static final String API_ENDPOINT = "http://104.237.150.113:3000/api/v1";
@@ -47,6 +38,7 @@ public class SearchActivity extends ActionBarActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         mContext = this.getApplicationContext();
 
@@ -83,17 +75,12 @@ public class SearchActivity extends ActionBarActivity{
                                 artworks[i] = results.getJSONObject(i).getJSONObject("artwork").getString("url");
                             }
 
-<<<<<<< HEAD
-                            SearchList adapter = new
-                                    SearchList(SearchActivity.this, titles, artists, artworks);
-=======
                             if(query.length() > 3) {
                                 adapter = new SearchList(SearchActivity.this, titles, artists, artworks);
                             } else {
                                 adapter = new SearchList(SearchActivity.this, new String[]{}, new String[]{}, new String[]{});
                             }
 
->>>>>>> origin/master
                             ListView list = (ListView)findViewById(R.id.list);
                             list.setAdapter(adapter);
                             list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -108,19 +95,6 @@ public class SearchActivity extends ActionBarActivity{
                             Log.e("SearchSpotify", "nope");
                         }
 
-<<<<<<< HEAD
-                        
-                        String[] titles = new String[results.length()];
-                        String[] artists = new String[results.length()];
-                        String[] artworks = new String[results.length()];
-
-                        /*for(int i = 0; i < results.length(); i++) {
-                            titles[i] =
-                        }*/
-
-
-=======
->>>>>>> origin/master
                     }
                 });
             }

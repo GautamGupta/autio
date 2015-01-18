@@ -46,8 +46,8 @@ public class LoginSpotify extends ActionBarActivity implements
 
         sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         sharedPrefEditor = sharedPref.edit();
-        // sharedPrefEditor.clear();
-        // sharedPrefEditor.commit();
+        sharedPrefEditor.clear();
+        sharedPrefEditor.commit();
         String access_token = sharedPref.getString(getString(R.string.access_token), "");
         sharedPrefEditor.putString(getString(R.string.device_type), "host");
         sharedPrefEditor.commit();

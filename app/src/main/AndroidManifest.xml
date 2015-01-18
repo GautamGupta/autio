@@ -24,7 +24,8 @@
 
         <activity
             android:name=".SpotifyActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
 
         <activity
@@ -42,7 +43,7 @@
 
         <activity
             android:name=".LoginSpotify"
-            android:launchMode="singleInstance" >
+            android:launchMode="singleTask" >
 
             <!-- An intent filter that will receive the response from the authentication service -->
             <intent-filter>
