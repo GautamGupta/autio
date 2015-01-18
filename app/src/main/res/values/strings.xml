@@ -10,6 +10,10 @@
     <string name="title_activity_login_spotify">Login via Spotify</string>
     <string name="hello_world">Hello world!</string>
 
+    <!-- Search -->
+    <string name="search_hint">Tell us what you want to hear.</string>
+    <string name="search_title">What\'s your jam?</string>
+
     <!-- Shared Preferences -->
     <string name="session_id">null</string>
     <string name="access_token">null</string>

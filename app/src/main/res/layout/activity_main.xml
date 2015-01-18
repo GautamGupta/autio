@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/background3"
     android:weightSum="1"
     android:baselineAligned="false"
     android:orientation="vertical"
@@ -24,9 +24,10 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="64dp"
+        android:layout_height="80dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linearLayout">
 
         <Button
             android:id="@+id/create"
@@ -35,13 +36,14 @@
             android:text="@string/button_create"
             android:onClick="btnCreate"
             android:textSize="18sp"
-            android:background="#3F51B5"
-            android:textColor="#ffffff"
-            android:alpha=".75"
-            android:padding="18dp"
+            android:padding="24dp"
             android:layout_below="@+id/imageView2"
             android:layout_toEndOf="@+id/imageView2"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp" />
 
         <Button
             android:id="@+id/join"
@@ -50,15 +52,15 @@
             android:text="@string/button_join"
             android:onClick="btnJoin"
             android:textSize="18sp"
-            style="?android:attr/borderlessButtonStyle"
-            android:textColor="#ffffff"
-            android:background="#3F51B5"
-            android:alpha=".85"
-            android:padding="18dp"
+            android:padding="24dp"
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/create"
             android:layout_toRightOf="@+id/imageView2"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginBottom="2dp" />
     </LinearLayout>
 
     <ImageView
@@ -69,9 +71,6 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp" />
-
-    />
-
 
 </RelativeLayout>
 
