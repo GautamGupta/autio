@@ -3,10 +3,14 @@ package me.autio.autio;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.net.Uri;
+import android.provider.ContactsContract;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.loopj.android.http.*;
 
 import com.spotify.sdk.android.Spotify;
 import com.spotify.sdk.android.authentication.AuthenticationResponse;
@@ -15,6 +19,16 @@ import com.spotify.sdk.android.playback.ConnectionStateCallback;
 import com.spotify.sdk.android.playback.Player;
 import com.spotify.sdk.android.playback.PlayerNotificationCallback;
 import com.spotify.sdk.android.playback.PlayerState;
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.Headers;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+
+import org.apache.http.Header;
+import org.json.JSONObject;
+
+import java.io.IOException;
 
 
 public class LoginSpotify extends ActionBarActivity implements
@@ -22,6 +36,8 @@ public class LoginSpotify extends ActionBarActivity implements
 
     private static final String CLIENT_ID = "7793202b53f64455ad566ade6425711d";
     private static final String REDIRECT_URI = "autio://callback";
+
+    private static final String API_ENDPOINT = "http://104.237.150.113:3000/api/v1";
 
     private Player mPlayer;
     private SharedPreferences sharedPref;
@@ -76,7 +92,37 @@ public class LoginSpotify extends ActionBarActivity implements
     }
 
     public void newSession() {
-        new CreateSessionTask(this.getApplicationContext()).execute("");
+
+        // Get first name
+        String firstName = null;
+        Cursor c = getContentResolver().query(ContactsContract.Profile.CONTENT_URI, null, null, null, null);
+        int count = c.getCount();
+        String[] columnNames = c.getColumnNames();
+        boolean b = c.moveToFirst();
+        int position = c.getPosition();
+        if (count == 1 && position == 0) {
+            for (int j = 0; j < columnNames.length; j++) {
+                String columnName = columnNames[j];
+                if (columnName.equalsIgnoreCase("display_name"))
+                    firstName = c.getString(c.getColumnIndex(columnName));
+            }
+        }
+        c.close();
+        Log.i("LoginSpotify", "First: " + firstName);
+
+        //Create session on server
+        AsyncHttpClient client = new AsyncHttpClient();
+        String url = API_ENDPOINT + "?action=create&first_name=" + firstName;
+
+        //Request page
+        client.get(url, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                // called when response HTTP status is "200 OK"
+                Log.i("LoginSpotify", response.toString());
+            }
+        });
+
     }
 
     @Override
