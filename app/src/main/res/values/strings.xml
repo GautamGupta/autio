@@ -15,7 +15,8 @@
     <string name="search_title">What\'s your jam?</string>
 
     <!-- Shared Preferences -->
-    <string name="session_id">null</string>
     <string name="access_token">null</string>
+    <string name="session_id">null</string>
+    <string name="device_type">null</string>
 
 </resources>
