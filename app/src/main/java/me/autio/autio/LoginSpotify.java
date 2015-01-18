@@ -35,10 +35,14 @@ public class LoginSpotify extends ActionBarActivity implements
     private SharedPreferences sharedPref;
     private SharedPreferences.Editor sharedPrefEditor;
 
+    public Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_spotify);
+
+        mContext = this.getApplicationContext();
 
         sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         sharedPrefEditor = sharedPref.edit();
@@ -120,6 +124,8 @@ public class LoginSpotify extends ActionBarActivity implements
                     Log.i("LoginSpotify", "Session id: " + session_id);
                     sharedPrefEditor.putString(getString(R.string.session_id), session_id);
                     sharedPrefEditor.commit();
+                    Intent intent = new Intent(mContext, SearchActivity.class);
+                    startActivity(intent);
                 } catch (Exception e) {
                     Log.e("LoginSpotify", "Error: " + e.toString());
                 }
