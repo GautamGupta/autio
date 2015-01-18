@@ -9,6 +9,7 @@ import android.provider.ContactsContract;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.webkit.WebView;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -123,9 +124,11 @@ public class LoginSpotify extends ActionBarActivity implements
                     String session_id = new JSONObject(response.toString()).getString("session_id");
                     Log.i("LoginSpotify", "Session id: " + session_id);
                     sharedPrefEditor.putString(getString(R.string.session_id), session_id);
-                    sharedPrefEditor.commit();
-                    Intent intent = new Intent(mContext, SearchActivity.class);
-                    startActivity(intent);
+                    sharedPrefEditor.apply();
+                    WebView QRView = (WebView) findViewById(R.id.webview);
+                    QRView.loadUrl("http://chart.apis.google.com/chart?cht=qr&chs=250x250&chld=H|2&chl=" + session_id);
+                    /* Intent intent = new Intent(mContext, SearchActivity.class);
+                    startActivity(intent); */
                 } catch (Exception e) {
                     Log.e("LoginSpotify", "Error: " + e.toString());
                 }

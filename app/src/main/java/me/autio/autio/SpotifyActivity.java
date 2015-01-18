@@ -17,9 +17,6 @@ import com.larvalabs.svgandroid.SVG;
 import com.larvalabs.svgandroid.SVGParser;
 import com.spotify.sdk.android.authentication.SpotifyAuthentication;
 
-/**
- * Created by Ivan on 2015-01-17.
- */
 public class SpotifyActivity extends ActionBarActivity {
 
     @Override
