@@ -10,8 +10,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.loopj.android.http.*;
-
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.spotify.sdk.android.Spotify;
 import com.spotify.sdk.android.authentication.AuthenticationResponse;
 import com.spotify.sdk.android.authentication.SpotifyAuthentication;
@@ -19,17 +19,9 @@ import com.spotify.sdk.android.playback.ConnectionStateCallback;
 import com.spotify.sdk.android.playback.Player;
 import com.spotify.sdk.android.playback.PlayerNotificationCallback;
 import com.spotify.sdk.android.playback.PlayerState;
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.Headers;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
 
 import org.apache.http.Header;
 import org.json.JSONObject;
-
-import java.io.IOException;
-
 
 public class LoginSpotify extends ActionBarActivity implements
         PlayerNotificationCallback, ConnectionStateCallback {
@@ -41,6 +33,7 @@ public class LoginSpotify extends ActionBarActivity implements
 
     private Player mPlayer;
     private SharedPreferences sharedPref;
+    private SharedPreferences.Editor sharedPrefEditor;
 
     public Context mContext;
 
@@ -52,12 +45,17 @@ public class LoginSpotify extends ActionBarActivity implements
         mContext = this.getApplicationContext();
 
         sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        sharedPrefEditor = sharedPref.edit();
+        // sharedPrefEditor.clear();
+        // sharedPrefEditor.commit();
         String access_token = sharedPref.getString(getString(R.string.access_token), "");
+        sharedPrefEditor.putString(getString(R.string.device_type), "host");
+        sharedPrefEditor.commit();
         if (access_token.isEmpty()) {
             SpotifyAuthentication.openAuthWindow(CLIENT_ID, "token", REDIRECT_URI,
                     new String[]{"user-read-private", "streaming"}, null, this);
         } else {
-            Log.i("LoginSpotify", access_token);
+            Log.i("LoginSpotify", "oAuth: " + access_token);
             newSession();
         }
     }
@@ -69,9 +67,8 @@ public class LoginSpotify extends ActionBarActivity implements
         if (uri != null) {
             AuthenticationResponse response = SpotifyAuthentication.parseOauthResponse(uri);
 
-            SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putString(getString(R.string.access_token), response.getAccessToken());
-            editor.commit();
+            sharedPrefEditor.putString(getString(R.string.access_token), response.getAccessToken());
+            sharedPrefEditor.commit();
             Log.i("LoginSpotify", response.getAccessToken());
             newSession();
 
@@ -114,18 +111,24 @@ public class LoginSpotify extends ActionBarActivity implements
         c.close();
         Log.i("LoginSpotify", "First: " + firstName);
 
-        //Create session on server
+        // Create session on server
         AsyncHttpClient client = new AsyncHttpClient();
         String url = API_ENDPOINT + "?action=create&first_name=" + firstName;
 
-        //Request page
+        // Request page
         client.get(url, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                // called when response HTTP status is "200 OK"
-                Log.i("LoginSpotify", response.toString());
-                Intent intent = new Intent(mContext, SearchActivity.class);
-                startActivity(intent);
+                try {
+                    String session_id = new JSONObject(response.toString()).getString("session_id");
+                    Log.i("LoginSpotify", "Session id: " + session_id);
+                    sharedPrefEditor.putString(getString(R.string.session_id), session_id);
+                    sharedPrefEditor.commit();
+                    Intent intent = new Intent(mContext, SearchActivity.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Log.e("LoginSpotify", "Error: " + e.toString());
+                }
             }
         });
 
