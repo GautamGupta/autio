@@ -53,8 +53,12 @@ public class SearchActivity extends ActionBarActivity{
                 String q = s.toString();
                 Log.i("Spotifysearch", q);
 
+                final String query = q;
+
                 String url = API_ENDPOINT + "/search?q=" + q;
                 client.get(url, new JsonHttpResponseHandler() {
+                    SearchList adapter;
+
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         // called when response HTTP status is "200 OK"
@@ -74,8 +78,12 @@ public class SearchActivity extends ActionBarActivity{
                                 artworks[i] = results.getJSONObject(i).getJSONObject("artwork").getString("url");
                             }
 
-                            SearchList adapter = new
-                                    SearchList(SearchActivity.this, titles, artists, artworks);
+                            if(query.length() > 3) {
+                                adapter = new SearchList(SearchActivity.this, titles, artists, artworks);
+                            } else {
+                                adapter = new SearchList(SearchActivity.this, new String[]{}, new String[]{}, new String[]{});
+                            }
+
                             ListView list = (ListView)findViewById(R.id.list);
                             list.setAdapter(adapter);
                             list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -89,8 +97,6 @@ public class SearchActivity extends ActionBarActivity{
                         } catch (JSONException e) {
                             Log.e("SearchSpotify", "nope");
                         }
-
-
 
                     }
                 });
