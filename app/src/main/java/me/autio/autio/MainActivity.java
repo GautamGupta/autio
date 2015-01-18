@@ -73,7 +73,10 @@ public class MainActivity extends ActionBarActivity {
                 SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putString(getString(R.string.session_id), session_id);
+                editor.putString(getString(R.string.device_type), "client");
                 editor.commit();
+                Intent searchIntent = new Intent(this, SearchActivity.class);
+                startActivity(searchIntent);
 
             } else {
                 Log.i("Barcode Result", "Failed");

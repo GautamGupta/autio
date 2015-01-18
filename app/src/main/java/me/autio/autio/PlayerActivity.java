@@ -9,9 +9,6 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.EditText;
 
-/**
- * Created by Ivan on 2015-01-18.
- */
 public class PlayerActivity extends ActionBarActivity {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
