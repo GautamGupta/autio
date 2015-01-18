@@ -22,6 +22,9 @@ import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.spotify.sdk.android.Spotify;
+import com.spotify.sdk.android.playback.Config;
+import com.spotify.sdk.android.playback.Player;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
@@ -32,7 +35,17 @@ public class SearchActivity extends ActionBarActivity{
 
     private static final String API_ENDPOINT = "http://104.237.150.113:3000/api/v1";
 
+    private static final String CLIENT_ID = "7793202b53f64455ad566ade6425711d";
+
     public Context mContext;
+
+    public Config playerConfig;
+
+    public Player mPlayer;
+
+    public Spotify spotify;
+
+    public String[] ids;
 
     public AsyncHttpClient client;
 
@@ -40,6 +53,12 @@ public class SearchActivity extends ActionBarActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        String access_token = getResources().getString(R.string.access_token);
+
+        playerConfig = new Config(this, access_token, CLIENT_ID);
+        spotify = new Spotify();
 
         mContext = this.getApplicationContext();
 
@@ -69,8 +88,10 @@ public class SearchActivity extends ActionBarActivity{
                             String[] titles = new String[results.length()];
                             String[] artists = new String[results.length()];
                             String[] artworks = new String[results.length()];
+                            ids = new String[results.length()];
 
                             for(int i = 0; i < results.length(); i++) {
+                                ids[i] = results.getJSONObject(i).getString("id");
                                 titles[i] = results.getJSONObject(i).getString("name");
                                 artists[i] = results.getJSONObject(i).getString("artist");
                                 artworks[i] = results.getJSONObject(i).getJSONObject("artwork").getString("url");
@@ -87,8 +108,20 @@ public class SearchActivity extends ActionBarActivity{
                             list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(AdapterView<?> parent, View view,
-                                                        int position, long id) {
-                                    //Toast.makeText(SearchActivity.this, "You Clicked at " + web[+position], Toast.LENGTH_SHORT).show();
+                                                        int p, long id) {
+                                    final String spotify_id = ids[p];
+
+                                    mPlayer = spotify.getPlayer(playerConfig, this, new Player.InitializationObserver() {
+                                        @Override
+                                        public void onInitialized() {
+                                            mPlayer.play("spotify:track:" + spotify_id);
+                                        }
+
+                                        @Override
+                                        public void onError(Throwable throwable) {
+                                            Log.e("MainActivity", "Could not initialize player: " + throwable.getMessage());
+                                        }
+                                    });
                                 }
                             });
 
