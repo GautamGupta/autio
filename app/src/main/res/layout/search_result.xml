@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <TableRow android:padding="6dp"
+        android:orientation="vertical"
+        android:id="@+id/dd3"
+        android:backgroundTintMode="src_over"
+        android:baselineAligned="false"
+        android:background="#20ffffff"
+        android:layout_marginBottom="2dp">
+        <ImageView
+            android:id="@+id/imgArtwork"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:src="@drawable/albumcover"
+            android:layout_marginRight="18dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp" />
+        <TextView
+            android:id="@+id/txt"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_column="2"
+            android:id="@+id/ll2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Song Title"
+                android:id="@+id/txtTitle"
+                android:layout_gravity="center"
+                android:layout_marginTop="6dp"
+                android:textStyle="bold"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Song Artist"
+                android:id="@+id/txtArtist"
+                android:layout_below="@+id/txtTitle"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="2dp" />
+        </RelativeLayout>
+
+    </TableRow>
+</TableLayout>
